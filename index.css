@@ -1,0 +1,306 @@
+/* ==========================================
+   ESTILOS BASE Y CONTROL DE FONDO (FORZADO)
+   ========================================== */
+html, 
+body, 
+main, 
+.container, 
+.container-fluid,
+section {
+    background-color: #141414 !important; /* Negro absoluto de fondo en todas las secciones */
+    color: #ffffff !important; /* Forzamos letras blancas */
+}
+
+body {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    margin: 0;
+    padding-top: 0 !important; /* El cuerpo empieza arriba del todo */
+}
+
+/* ==========================================
+   NAVBAR (MENÚ SUPERIOR)
+   ========================================== */
+.navbar {
+    background-color: rgba(20, 20, 20, 0.95) !important;
+    padding: 15px 4%;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 28px; 
+    font-weight: bold;
+    color: #e50914 !important; /* Rojo de marca */
+    text-transform: uppercase;
+}
+
+.logo span {
+    color: #ffffff !important;
+}
+
+nav a {
+    color: #e5e5e5 !important;
+    text-decoration: none;
+    margin-right: 25px; 
+    font-size: 17px; 
+    transition: color 0.3s;
+}
+
+nav a:hover, nav a.active {
+    color: #ffffff !important;
+    font-weight: bold;
+}
+
+.search-box input {
+    background-color: #000000 !important;
+    border: 1px solid #333333 !important;
+    color: #ffffff !important;
+    padding: 6px 12px;
+    font-size: 15px; 
+    border-radius: 4px;
+}
+
+/* ==========================================
+   SECCIÓN HERO (BANNER PRINCIPAL DE PELÍCULAS Y SERIES)
+   ========================================== */
+.hero {
+    height: 85vh; 
+    /* DEGRADADO SUAVE: Comienza invisible arriba y se funde al negro (#141414) en el borde inferior */
+    background: linear-gradient(to bottom, 
+                    rgba(20, 20, 20, 0) 0%, 
+                    rgba(20, 20, 20, 0.3) 50%, 
+                    rgba(20, 20, 20, 0.8) 80%, 
+                    #141414 100%), 
+                url('https://images.unsplash.com/photo-1534447677768-be436bb09401?q=80&w=1200') no-repeat center center/cover !important;
+    display: flex;
+    align-items: center;
+    padding: 0 4%;
+    padding-top: 110px !important; /* Mantiene el texto separado de la barra */
+    border-bottom: none !important; /* Eliminamos bordes duros */
+    box-shadow: none !important;
+}
+
+.hero-content {
+    max-width: 600px;
+}
+
+.hero-content h1 {
+    font-size: 52px;
+    font-weight: bold;
+    color: #ffffff !important;
+    margin-bottom: 10px;
+}
+
+.hero-content .meta {
+    color: #cccccc !important;
+    font-size: 14px;
+}
+
+.hero-content .description {
+    color: #ffffff !important;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+
+.badge-top {
+    background-color: #333333 !important;
+    color: #ffffff !important;
+    padding: 4px 8px;
+    font-size: 11px;
+    font-weight: bold;
+    border-radius: 3px;
+    letter-spacing: 1px;
+}
+
+.hero-content .buttons .btn {
+    padding: 10px 25px;
+    font-weight: bold;
+    border-radius: 4px;
+    margin-right: 10px;
+}
+
+.btn.play {
+    background-color: #333333 !important;
+    color: #ffffff !important;
+    border: 1px solid #555555 !important;
+}
+
+.btn.play:hover {
+    background-color: #444444 !important;
+}
+
+.btn.info {
+    background-color: rgba(51, 51, 51, 0.6) !important;
+    color: #ffffff !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+}
+
+.btn.info:hover {
+    background-color: rgba(51, 51, 51, 0.9) !important;
+}
+
+.hover-link {
+    font-size: 14px;
+    color: #cccccc !important;
+    transition: opacity 0.2s;
+}
+
+.hover-link:hover {
+    opacity: 0.8;
+    color: #ffffff !important;
+}
+
+/* ==========================================
+   ESTILOS DE PELÍCULAS
+   ========================================== */
+.movies-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 20px;
+}
+
+.movie-card {
+    background-color: #181818 !important; 
+    border-radius: 6px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.movie-card:hover {
+    transform: scale(1.05);
+}
+
+.img-container {
+    position: relative;
+    background-color: #181818 !important;
+}
+
+.img-container img {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+}
+
+.play-overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.7) !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 40px;
+    color: #ffffff !important;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.movie-card:hover .play-overlay,
+.series-card:hover .play-overlay {
+    opacity: 1;
+}
+
+.movie-info {
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #181818 !important;
+}
+
+.movie-info h3 {
+    font-size: 15px;
+    margin: 0;
+    font-weight: bold;
+    color: #ffffff !important;
+}
+
+.rating-badge {
+    background-color: #333333 !important;
+    color: #ffffff !important;
+    font-weight: bold;
+    padding: 2px 6px;
+    font-size: 12px;
+    border-radius: 4px;
+}
+
+/* ==========================================
+   ESTILOS DE SERIES
+   ========================================== */
+.series-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 25px;
+}
+
+.series-card {
+    background-color: #181818 !important; 
+    border-radius: 8px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.series-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.8) !important;
+}
+
+.series-card .img-container img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.series-info {
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 130px;
+    background-color: #181818 !important;
+}
+
+.series-info h3 {
+    font-size: 16px;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #ffffff !important;
+}
+
+.series-info .synopsis {
+    font-size: 12px;
+    color: #cccccc !important;
+    line-height: 1.4;
+    margin: 0;
+}
+
+.series-info .rating {
+    align-self: flex-end;
+    background-color: #333333 !important;
+    color: #ffffff !important;
+    font-weight: bold;
+    padding: 2px 8px;
+    font-size: 12px;
+    border-radius: 4px;
+    margin-top: 10px;
+}
+
+/* ==========================================
+   FOOTER (PIE DE PÁGINA)
+   ========================================== */
+footer {
+    background-color: #141414 !important;
+    text-align: center;
+    padding: 40px;
+    color: #808080 !important;
+    font-size: 14px;
+    border-top: 1px solid #222222 !important;
+    margin-top: 50px;
+}

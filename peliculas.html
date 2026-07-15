@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CineFlex | Catálogo de Películas</title>
+    <link rel="stylesheet" href="index.css"> 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="logo">Cine<span>Flex</span></div>
+        <nav>
+            <a href="index.html">Inicio</a>
+            <a href="peliculas.html" class="active">Películas</a>
+            <a href="series.html">Series</a>
+            <a href="#">Mi Lista</a>
+        </nav>
+        <div class="search-box">
+            <input type="text" placeholder="Buscar película...">
+        </div>
+    </header>
+
+    <main class="container my-5 pt-5">
+        <h2 class="text-white mb-4">Todas las Películas</h2>
+        
+        <div class="movies-grid">
+            <div class="movie-card btn-play-trigger" data-video="https://www.youtube.com/embed/UoSSbmD9vco">
+                <div class="img-container">
+                    <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=400" alt="Interestelar">
+                    <div class="play-overlay">▶</div>
+                </div>
+                <div class="movie-info">
+                    <h3>Interestelar</h3>
+                    <span>8.6</span>
+                </div>
+            </div>
+
+            <div class="movie-card btn-play-trigger" data-video="https://www.youtube.com/embed/IqRRLA6pZvo">
+                <div class="img-container">
+                    <img src="https://images.unsplash.com/photo-1509347528160-9a9e33742cdb?q=80&w=400" alt="The Batman">
+                    <div class="play-overlay">▶</div>
+                </div>
+                <div class="movie-info">
+                    <h3>The Batman</h3>
+                    <span>8.5</span>
+                </div>
+            </div>
+
+            <div class="movie-card btn-play-trigger" data-video="https://www.youtube.com/embed/YoHD9XEInc0">
+                <div class="img-container">
+                    <img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?q=80&w=400" alt="Inception">
+                    <div class="play-overlay">▶</div>
+                </div>
+                <div class="movie-info">
+                    <h3>Inception</h3>
+                    <span>8.8</span>
+                </div>
+            </div>
+
+            <div class="movie-card btn-play-trigger" data-video="https://www.youtube.com/embed/JfVOs4VSpmA">
+                <div class="img-container">
+                    <img src="https://images.unsplash.com/photo-1635805737707-575885ab0820?q=80&w=400" alt="Spider-Man">
+                    <div class="play-overlay">▶</div>
+                </div>
+                <div class="movie-info">
+                    <h3>Spider-Man: No Way Home</h3>
+                    <span>8.2</span>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 CineFlex. Creado con ❤️ para amantes del cine.</p>
+    </footer>
+
+    <div class="modal fade" id="videoModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content bg-black border-0">
+                <div class="modal-header border-0 p-2">
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-0">
+                    <div class="ratio ratio-16x9">
+                        <iframe id="videoPlayer" src="" title="Video Player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const videoModal = document.getElementById('videoModal');
+        const videoPlayer = document.getElementById('videoPlayer');
+        const bootstrapModal = new bootstrap.Modal(videoModal);
+
+        document.querySelectorAll('.btn-play-trigger').forEach(item => {
+            item.addEventListener('click', () => {
+                const videoSrc = item.getAttribute('data-video');
+                videoPlayer.setAttribute('src', `${videoSrc}?autoplay=1`);
+                bootstrapModal.show();
+            });
+        });
+
+        videoModal.addEventListener('hidden.bs.modal', () => {
+            videoPlayer.setAttribute('src', '');
+        });
+    </script>
+</body>
+</html>

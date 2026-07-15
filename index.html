@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CineFlex | Películas y Series en un solo lugar</title>
+    <link rel="stylesheet" href="index.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="logo">Cine<span>Flex</span></div>
+        <nav>
+            <a href="index.html" class="active">Inicio</a>
+            <a href="peliculas.html">Películas</a>
+            <a href="series.html">Series</a>
+            <a href="#">Mi Lista</a>
+        </nav>
+        <div class="search-box">
+            <input type="text" placeholder="Buscar...">
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <span class="badge-top mb-2 d-inline-block">RECOMENDADO HOY</span>
+            <h1>Interestelar</h1>
+            <p class="meta">2014 | 2h 49min | Sci-Fi</p>
+            <p class="description">Un grupo de científicos y exploradores viaja a través de un agujero de gusano en el espacio para encontrar un nuevo hogar para la humanidad.</p>
+            <div class="buttons">
+                <button class="btn play btn-play-trigger" data-video="https://www.youtube.com/watch?v=LYS2O1nl9iM">▶ Reproducir</button>
+                <button class="btn info">ℹ Más Info</button>
+            </div>
+        </div>
+    </section>
+
+    <main class="container my-5">
+        
+        <section class="mb-5">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h2 class="text-white m-0">Películas en Tendencia</h2>
+                <a href="peliculas.html" class="text-danger text-decoration-none fw-bold hover-link">Ver todo Películas →</a>
+            </div>
+            
+            <div class="movies-grid">
+                <div class="movie-card btn-play-trigger" data-video="https://www.youtube.com/embed/IqRRLA6pZvo">
+                    <div class="img-container">
+                        <img src="https://images.unsplash.com/photo-1509347528160-9a9e33742cdb?q=80&w=400" alt="The Batman">
+                        <div class="play-overlay">▶</div>
+                    </div>
+                    <div class="movie-info">
+                        <h3>The Batman</h3>
+                        <span class="rating-badge">8.5</span>
+                    </div>
+                </div>
+
+                <div class="movie-card btn-play-trigger" data-video="https://www.youtube.com/embed/YoHD9XEInc0">
+                    <div class="img-container">
+                        <img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?q=80&w=400" alt="Inception">
+                        <div class="play-overlay">▶</div>
+                    </div>
+                    <div class="movie-info">
+                        <h3>Inception</h3>
+                        <span class="rating-badge">8.8</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-5">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h2 class="text-white m-0">Series que la están rompiendo</h2>
+                <a href="series.html" class="text-danger text-decoration-none fw-bold hover-link">Ver todo Series →</a>
+            </div>
+            
+            <div class="series-grid">
+                <div class="series-card btn-play-trigger" data-video="https://www.youtube.com/embed/b9EkMc79ZSU">
+                    <div class="img-container">
+                        <img src="https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?q=80&w=400" alt="Stranger Things">
+                        <div class="play-overlay">▶</div>
+                    </div>
+                    <div class="series-info">
+                        <div class="text-content">
+                            <h3>Stranger Things</h3>
+                            <p class="synopsis">La desaparición de un niño desvela misterios de experimentos secretos y fuerzas sobrenaturales.</p>
+                        </div>
+                        <span class="rating">8.7</span>
+                    </div>
+                </div>
+
+                <div class="series-card btn-play-trigger" data-video="https://www.youtube.com/embed/uLtkt8BonwM">
+                    <div class="img-container">
+                        <img src="https://images.unsplash.com/photo-1509198397868-475647b2a1e5?q=80&w=400" alt="The Last of Us">
+                        <div class="play-overlay">▶</div>
+                    </div>
+                    <div class="series-info">
+                        <div class="text-content">
+                            <h3>The Last of Us</h3>
+                            <p class="synopsis">Joel y Ellie deben sobrevivir a un viaje brutal a través de unos EE.UU. diezmados por una pandemia fúngica.</p>
+                        </div>
+                        <span class="rating">8.8</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 CineFlex. Creado con ❤️ para amantes del cine y la televisión.</p>
+    </footer>
+
+    <div class="modal fade" id="videoModal" tabindex="-1" aria-labelledby="videoModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content bg-black border-0">
+                <div class="modal-header border-0 p-2">
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-0">
+                    <div class="ratio ratio-16x9">
+                        <iframe id="videoPlayer" src="" title="Video Player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const videoModal = document.getElementById('videoModal');
+        const videoPlayer = document.getElementById('videoPlayer');
+        const bootstrapModal = new bootstrap.Modal(videoModal);
+
+        document.querySelectorAll('.btn-play-trigger').forEach(item => {
+            item.addEventListener('click', () => {
+                const videoSrc = item.getAttribute('data-video');
+                videoPlayer.setAttribute('src', `${videoSrc}?autoplay=1`);
+                bootstrapModal.show();
+            });
+        });
+
+        videoModal.addEventListener('hidden.bs.modal', () => {
+            videoPlayer.setAttribute('src', '');
+        });
+    </script>
+</body>
+</html>

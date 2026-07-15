@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CineFlex | Tus Series Favoritas</title>
+    <link rel="stylesheet" href="series.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="logo">Cine<span>Flex</span></div>
+        <nav>
+            <a href="index.html">Inicio</a>
+            <a href="index.html">Películas</a>
+            <a href="series.html" class="active">Series</a>
+            <a href="#">Mi Lista</a>
+        </nav>
+        <div class="search-box">
+            <input type="text" placeholder="Buscar serie...">
+        </div>
+    </header>
+
+    <section class="hero-series">
+        <div class="hero-content">
+            <span class="badge-top">SERIE DESTACADA</span>
+            <h1>Breaking Bad</h1>
+            <p class="meta">2008 | 5 Temporadas | Drama</p>
+            <p class="description">Un profesor de química de secundaria con cáncer terminal se asocia con un exestudiante para asegurar el futuro financiero de su familia fabricando y vendiendo metanfetamina.</p>
+            <div class="buttons">
+                <button class="btn play btn-play-trigger" data-video="https://www.youtube.com/embed/HhesaQXLuRY">▶ Ver Tráiler</button>
+                <button class="btn info">ℹ Episodios</button>
+            </div>
+        </div>
+    </section>
+
+    <main class="container my-5">
+        <h2 class="text-white mb-4">Series más Populares</h2>
+        <div class="series-grid">
+            
+            <div class="series-card btn-play-trigger" data-video="https://www.youtube.com/embed/b9EkMc79ZSU">
+                <div class="img-container">
+                    <img src="https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?q=80&w=400" alt="Stranger Things">
+                    <div class="play-overlay">▶</div>
+                </div>
+                <div class="series-info">
+                    <div class="text-content">
+                        <h3>Stranger Things</h3>
+                        <p class="synopsis">La desaparición de un niño desvela misterios de experimentos secretos y fuerzas sobrenaturales.</p>
+                    </div>
+                    <span class="rating">8.7</span>
+                </div>
+            </div>
+
+            <div class="series-card btn-play-trigger" data-video="https://www.youtube.com/embed/uLtkt8BonwM">
+                <div class="img-container">
+                    <img src="https://images.unsplash.com/photo-1509198397868-475647b2a1e5?q=80&w=400" alt="The Last of Us">
+                    <div class="play-overlay">▶</div>
+                </div>
+                <div class="series-info">
+                    <div class="text-content">
+                        <h3>The Last of Us</h3>
+                        <p class="synopsis">Joel y Ellie deben sobrevivir a un viaje brutal a través de unos EE.UU. diezmados por una pandemia fúngica.</p>
+                    </div>
+                    <span class="rating">8.8</span>
+                </div>
+            </div>
+
+            <div class="series-card btn-play-trigger" data-video="https://www.youtube.com/embed/OzYxJV_7epw">
+                <div class="img-container">
+                    <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=400" alt="Succession">
+                    <div class="play-overlay">▶</div>
+                </div>
+                <div class="series-info">
+                    <div class="text-content">
+                        <h3>Succession</h3>
+                        <p class="synopsis">La saga de una familia disfuncional dueña de un imperio de medios de comunicación que lucha por el control.</p>
+                    </div>
+                    <span class="rating">8.9</span>
+                </div>
+            </div>
+
+            <div class="series-card btn-play-trigger" data-video="https://www.youtube.com/embed/ESRgLAnXjS0">
+                <div class="img-container">
+                    <img src="https://images.unsplash.com/photo-1509248961158-e54f6934749c?q=80&w=400" alt="Dark">
+                    <div class="play-overlay">▶</div>
+                </div>
+                <div class="series-info">
+                    <div class="text-content">
+                        <h3>Dark</h3>
+                        <p class="synopsis">La desaparición de un niño en un pueblo alemán desata una compleja conspiración de viajes en el tiempo.</p>
+                    </div>
+                    <span class="rating">8.7</span>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 CineFlex. Creado con ❤️ para amantes del cine.</p>
+    </footer>
+
+    <div class="modal fade" id="videoModal" tabindex="-1" aria-labelledby="videoModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content bg-black border-0">
+                <div class="modal-header border-0 p-2">
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-0">
+                    <div class="ratio ratio-16x9">
+                        <iframe id="videoPlayer" src="" title="Video Player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const videoModal = document.getElementById('videoModal');
+        const videoPlayer = document.getElementById('videoPlayer');
+        const bootstrapModal = new bootstrap.Modal(videoModal);
+
+        document.querySelectorAll('.btn-play-trigger').forEach(item => {
+            item.addEventListener('click', () => {
+                const videoSrc = item.getAttribute('data-video');
+                videoPlayer.setAttribute('src', `${videoSrc}?autoplay=1`);
+                bootstrapModal.show();
+            });
+        });
+
+        videoModal.addEventListener('hidden.bs.modal', () => {
+            videoPlayer.setAttribute('src', '');
+        });
+    </script>
+</body>
+</html>
