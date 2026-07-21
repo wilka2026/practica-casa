@@ -9,26 +9,42 @@ body, html {
     height: 100%;
     background-color: #000;
     color: #fff;
+    overflow-x: hidden;
 }
 
+/* Contenedor principal con fondo de cine/películas */
 .login-wrapper {
     min-height: 100vh;
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.8)),
-                url('https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?q=80&w=1600') no-repeat center center/cover;
+    /* Imagen de fondo tipo collage/cine en alta resolución */
+    background: url('https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?q=80&w=1920') no-repeat center top/cover;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    position: relative;
 }
 
+/* Superposición oscura: negro total arriba, degradado sutil hacia abajo */
+.login-wrapper::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.65) 50%, rgba(0, 0, 0, 0.95) 100%);
+    z-index: 1;
+}
 
+/* Header con logo CineFlex */
 .login-header {
-    padding: 25px 50px;
+    padding: 20px 50px;
+    position: relative;
+    z-index: 10;
 }
 
 .logo {
     font-size: 2.2rem;
     font-weight: 800;
-    color: #e50914; 
+    color: #e50914;
     text-decoration: none;
     letter-spacing: 1px;
 }
@@ -37,28 +53,36 @@ body, html {
     color: #fff;
 }
 
+/* Contenedor pegado al límite superior para la sombra oscura */
 .login-container {
     display: flex;
     justify-content: center;
-    align-items: center;
-    padding: 20px;
+    align-items: flex-start;
+    padding-top: 0;
+    padding-bottom: 20px;
     flex-grow: 1;
+    position: relative;
+    z-index: 10;
 }
 
+/* Caja del formulario de inicio de sesión */
 .login-box {
     background-color: rgba(0, 0, 0, 0.75);
-    padding: 60px 68px 40px;
+    padding: 45px 68px 30px;
     width: 100%;
     max-width: 450px;
     border-radius: 8px;
+    margin-top: 0;
+    backdrop-filter: blur(3px); /* Ligero desenfoque de fondo elegante */
 }
 
 .login-box h2 {
     font-size: 2rem;
     font-weight: 700;
-    margin-bottom: 28px;
+    margin-bottom: 24px;
 }
 
+/* Floating labels (inputs animados) */
 .input-group-custom {
     position: relative;
     margin-bottom: 16px;
@@ -98,6 +122,7 @@ body, html {
     background: #454545;
 }
 
+/* Botón Iniciar Sesión estilo Netflix */
 .btn-login {
     width: 100%;
     background-color: #e50914;
@@ -107,7 +132,7 @@ body, html {
     padding: 14px;
     font-size: 1rem;
     font-weight: 700;
-    margin-top: 24px;
+    margin-top: 20px;
     cursor: pointer;
     transition: background-color 0.2s;
 }
@@ -116,6 +141,7 @@ body, html {
     background-color: #f40612;
 }
 
+/* Opciones extras */
 .login-help {
     display: flex;
     justify-content: space-between;
@@ -144,8 +170,9 @@ body, html {
     text-decoration: underline;
 }
 
+/* Footer interno de la caja */
 .login-footer {
-    margin-top: 40px;
+    margin-top: 30px;
     color: #737373;
 }
 
@@ -163,20 +190,19 @@ body, html {
     text-decoration: underline;
 }
 
-.captcha-notice {
-    font-size: 0.8rem;
-}
-
+/* Footer general inferior */
 .login-site-footer {
-    background-color: rgba(0, 0, 0, 0.75);
-    padding: 30px 0;
+    background-color: rgba(0, 0, 0, 0.9);
+    padding: 25px 0;
     color: #737373;
     font-size: 0.85rem;
     border-top: 1px solid #333;
+    position: relative;
+    z-index: 10;
 }
 
 .login-site-footer p {
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 
 .footer-links {
@@ -194,15 +220,23 @@ body, html {
     text-decoration: underline;
 }
 
+/* Responsivo para móviles */
 @media (max-width: 740px) {
+    .login-container {
+        padding-top: 0;
+    }
     .login-box {
-        padding: 40px 20px;
+        padding: 30px 20px;
         background-color: #000;
+        border-radius: 0;
     }
     .login-wrapper {
         background: #000;
     }
+    .login-wrapper::before {
+        display: none;
+    }
     .login-header {
-        padding: 20px;
+        padding: 15px 20px;
     }
 }
