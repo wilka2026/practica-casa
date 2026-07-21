@@ -1,3 +1,4 @@
+/* Reset básico y tipografía */
 * {
     margin: 0;
     padding: 0;
@@ -5,160 +6,143 @@
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
-body, html {
-    height: 100%;
+body {
     background-color: #000;
     color: #fff;
-    overflow-x: hidden;
-}
-
-/* Contenedor principal con fondo de cine/películas */
-.login-wrapper {
     min-height: 100vh;
-    /* Imagen de fondo tipo collage/cine en alta resolución */
-    background: url('https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?q=80&w=1920') no-repeat center top/cover;
+    width: 100vw;
+    overflow-x: hidden;
+    position: relative;
     display: flex;
     flex-direction: column;
-    position: relative;
 }
 
-/* Superposición oscura: negro total arriba, degradado sutil hacia abajo */
-.login-wrapper::before {
-    content: '';
-    position: absolute;
+/* Imagen de fondo a pantalla completa */
+.background-img {
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.65) 50%, rgba(0, 0, 0, 0.95) 100%);
-    z-index: 1;
+    object-fit: cover;
+    z-index: -2;
 }
 
-/* Header con logo CineFlex */
-.login-header {
-    padding: 20px 50px;
+/* Capa de sombra/oscuridad sobre la imagen para legibilidad */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.55); /* Capa oscura semitransparente */
+    z-index: -1;
+}
+
+/* Header y Logo */
+.header {
+    padding: 25px 50px;
     position: relative;
     z-index: 10;
 }
 
 .logo {
     font-size: 2.2rem;
-    font-weight: 800;
-    color: #e50914;
-    text-decoration: none;
+    font-weight: bold;
+    color: #e50914; /* Rojo estilo streaming */
     letter-spacing: 1px;
 }
 
 .logo span {
-    color: #fff;
+    color: #ffffff;
 }
 
-/* Contenedor pegado al límite superior para la sombra oscura */
+/* Contenedor principal centrado */
 .login-container {
+    flex: 1;
     display: flex;
     justify-content: center;
-    align-items: flex-start;
-    padding-top: 0;
-    padding-bottom: 20px;
-    flex-grow: 1;
-    position: relative;
+    align-items: center;
+    padding: 20px;
     z-index: 10;
 }
 
-/* Caja del formulario de inicio de sesión */
-.login-box {
+/* Tarjeta con fondo negro traslúcido */
+.login-card {
     background-color: rgba(0, 0, 0, 0.75);
-    padding: 45px 68px 30px;
+    padding: 60px 68px 40px;
     width: 100%;
     max-width: 450px;
     border-radius: 8px;
-    margin-top: 0;
-    backdrop-filter: blur(3px); /* Ligero desenfoque de fondo elegante */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
 }
 
-.login-box h2 {
+.login-card h2 {
     font-size: 2rem;
     font-weight: 700;
-    margin-bottom: 24px;
+    margin-bottom: 28px;
 }
 
-/* Floating labels (inputs animados) */
-.input-group-custom {
-    position: relative;
-    margin-bottom: 16px;
+/* Formulario e Inputs */
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
 }
 
-.input-group-custom input {
+.input-group input {
     width: 100%;
-    height: 50px;
-    background: #333;
+    padding: 16px 20px;
+    background-color: #333333;
     border: none;
     border-radius: 4px;
     color: #fff;
-    padding: 16px 20px 0px 20px;
     font-size: 1rem;
     outline: none;
 }
 
-.input-group-custom label {
-    position: absolute;
-    left: 20px;
-    top: 50%;
-    transform: translateY(-50%);
+.input-group input::placeholder {
     color: #8c8c8c;
-    font-size: 1rem;
-    pointer-events: none;
-    transition: all 0.2s ease;
 }
 
-.input-group-custom input:focus ~ label,
-.input-group-custom input:not(:placeholder-shown) ~ label {
-    top: 12px;
-    font-size: 0.75rem;
-    transform: translateY(0);
+.input-group input:focus {
+    background-color: #454545;
 }
 
-.input-group-custom input:focus {
-    background: #454545;
-}
-
-/* Botón Iniciar Sesión estilo Netflix */
-.btn-login {
+/* Botón de Submit */
+.btn-submit {
     width: 100%;
+    padding: 16px;
     background-color: #e50914;
     color: #fff;
     border: none;
     border-radius: 4px;
-    padding: 14px;
     font-size: 1rem;
     font-weight: 700;
-    margin-top: 20px;
     cursor: pointer;
-    transition: background-color 0.2s;
+    margin-top: 24px;
+    transition: background-color 0.2s ease;
 }
 
-.btn-login:hover {
+.btn-submit:hover {
     background-color: #f40612;
 }
 
-/* Opciones extras */
-.login-help {
+/* Opciones del formulario */
+.form-options {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 12px;
     font-size: 0.85rem;
     color: #b3b3b3;
+    margin-top: 10px;
 }
 
-.form-check-input {
-    background-color: #737373;
-    border: none;
-}
-
-.form-check-input:checked {
-    background-color: #737373;
-    border-color: #737373;
+.remember-me {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
 }
 
 .help-link {
@@ -170,73 +154,28 @@ body, html {
     text-decoration: underline;
 }
 
-/* Footer interno de la caja */
-.login-footer {
-    margin-top: 30px;
+/* Sección de Registro / Suscríbete */
+.signup-section {
+    margin-top: 40px;
     color: #737373;
+    font-size: 0.95rem;
 }
 
-.signup-text {
-    font-size: 1rem;
-    margin-bottom: 12px;
-}
-
-.signup-text a {
+.signup-section a {
     color: #fff;
     text-decoration: none;
 }
 
-.signup-text a:hover {
-    text-decoration: underline;
-}
-
-/* Footer general inferior */
-.login-site-footer {
-    background-color: rgba(0, 0, 0, 0.9);
-    padding: 25px 0;
-    color: #737373;
-    font-size: 0.85rem;
-    border-top: 1px solid #333;
-    position: relative;
-    z-index: 10;
-}
-
-.login-site-footer p {
-    margin-bottom: 15px;
-}
-
-.footer-links {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 12px;
-}
-
-.footer-links a {
-    color: #737373;
-    text-decoration: none;
-}
-
-.footer-links a:hover {
+.signup-section a:hover {
     text-decoration: underline;
 }
 
 /* Responsivo para móviles */
 @media (max-width: 740px) {
-    .login-container {
-        padding-top: 0;
+    .header {
+        padding: 20px;
     }
-    .login-box {
-        padding: 30px 20px;
-        background-color: #000;
-        border-radius: 0;
-    }
-    .login-wrapper {
-        background: #000;
-    }
-    .login-wrapper::before {
-        display: none;
-    }
-    .login-header {
-        padding: 15px 20px;
+    .login-card {
+        padding: 40px 30px;
     }
 }
